@@ -3,9 +3,10 @@ import streamlit.components.v1 as components
 import pandas as pd
 import networkx as nx
 from pyvis.network import Network
+import os
 
-
-df = pd.read_csv("chains_data_v4.csv")
+data_file = os.path.join(os.path.dirname(__file__), "chains_date_v4.csv")
+df = pd.read_csv(data_file)
 
 # Make title
 st.title('Network Graph Visualization of Defi')
