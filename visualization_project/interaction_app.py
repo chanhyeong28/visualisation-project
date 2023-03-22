@@ -5,7 +5,7 @@ import networkx as nx
 from pyvis.network import Network
 
 
-df = pd.read_csv("data/chains_data_v4.csv")
+df = pd.read_csv("chains_data_v4.csv")
 
 # Make title
 st.title('Network Graph Visualization of Defi')
