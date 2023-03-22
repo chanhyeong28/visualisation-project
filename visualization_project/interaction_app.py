@@ -5,7 +5,7 @@ import networkx as nx
 from pyvis.network import Network
 import os
 
-data_file = os.path.join(os.path.dirname(__file__), "chains_date_v4.csv")
+data_file = os.path.join(os.path.dirname(__file__), "chains_data_v4.csv")
 df = pd.read_csv(data_file)
 
 # Make title
