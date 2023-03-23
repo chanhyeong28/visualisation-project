@@ -11,8 +11,6 @@ ch.drop(['Timestamp'], axis=0, inplace=True)
 ch.columns = list_
 ch_ = ch[1:]
 ch = ch_.reset_index()
-
-
 # make chains list
 ch_list = ch["index"]
 ch_list = ch_list.tolist()
@@ -67,7 +65,7 @@ for i in add_list:
 
 df = pd.DataFrame(chain_list_result)
 
-# add "(chain)" to chains whose names are the same with protocols'.
+# add (C) to chain name
 
 df["chain"] = "(C)" + df["chain"] 
 
