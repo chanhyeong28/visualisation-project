@@ -104,7 +104,7 @@ if response.status_code == 200:
 
         #add protocol_nodes
         for protocol, value in protocols_tvl.items():
-            G.add_node(protocol, size = 0.00000000025 * value[0], color = 'white')
+            G.add_node(protocol, size = 0.0000000001 * value[0], color = 'white')
 
         #add edges
         G.add_edges_from(edges_list)
