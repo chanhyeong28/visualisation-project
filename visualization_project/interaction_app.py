@@ -88,8 +88,8 @@ if response.status_code == 200:
         protocols_tvl = {protocol : df.loc[df['protocol'] == protocol, 'protocol_tvl'].unique().tolist() for protocol in protocols}
 
         # Set nodes size
-        chain_size = [np.exp(10 * chains_tvl[chain][0]) for chain in chains]
-        protocol_size = [np.exp(protocols_tvl[protocol][0]) for protocol in protocols]
+        chain_size = [0.00000000001 * chains_tvl[chain][0] for chain in chains]
+        protocol_size = [0.00000000001 * protocols_tvl[protocol][0] for protocol in protocols]
         
         #add chain_nodes
         G.add_nodes_from(chains, value = chain_size)
