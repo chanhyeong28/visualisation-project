@@ -100,7 +100,7 @@ if response.status_code == 200:
         
         #add chain_nodes
         for chain, value in chains_tvl.items():
-            G.add_node(chain, size = np.log(1 + 0.00000001 * value[0])
+            G.add_node(chain, size = np.log(1 + 0.00000001 * value[0]))
 
         #add protocol_nodes
         for protocol, value in protocols_tvl.items():
