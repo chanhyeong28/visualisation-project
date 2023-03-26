@@ -50,7 +50,7 @@ if response.status_code == 200:
     df = df[df['protocol_tvl']  >= df['protocol_tvl'].median()]
 
     # drop if chain_tvl value is under their median value
-    df = df[df['chain_tvl']  >= df['chain_tvl'].median()]
+    df = df[df['chain_tvl']  >= 0.5 * df['chain_tvl'].median()]
 
 
     # show data table in page
