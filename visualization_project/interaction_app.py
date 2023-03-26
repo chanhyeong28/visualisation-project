@@ -44,6 +44,7 @@ if response.status_code == 200:
     # drop if chain_tvl or protocol_tvl is zero
     df = df[(df['chain_tvl'] != 0) & (df['protocol_tvl'] != 0)]
 
+    # show data table in page
     st.dataframe(df.style.highlight_max(axis=0))
 
     # Define selection options and sort alphabetically
@@ -85,8 +86,10 @@ if response.status_code == 200:
         protocols_tvl = {protocol : df.loc[df['protocol'] == protocol, 'protocol_tvl'].unique().tolist() for protocol in protocols}
 
         # Set nodes size
-        chain_size = [0.0001 * (chains_tvl[chain][0]) for chain in chains]
-        protocol_size = [0.0001 * (protocols_tvl[protocol][0]) for protocol in protocols]
+        chain_size = [g.degree(chain) * 30 for chain in chains]
+        protocol_size = [g.degree(protocol) for protocol in protocols]
+        # chain_size = [0.0001 * chains_tvl[chain][0] for chain in chains]
+        # protocol_size = [0.0001 * protocols_tvl[protocol][0] for protocol in protocols]
         
         #add chain_nodes
         G.add_nodes_from(chains, value = chain_size)
