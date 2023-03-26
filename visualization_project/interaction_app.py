@@ -52,10 +52,6 @@ if response.status_code == 200:
     # drop if chain_tvl value is under their median value
     df = df[df['chain_tvl']  >= 0.5 * df['chain_tvl'].median()]
 
-
-    # show data table in page
-    st.dataframe(df.style.highlight_max(axis=0))
-
     # Define selection options and sort alphabetically
     category_list = list(df['protocol_category'].unique())
     category_list.sort()
@@ -129,7 +125,7 @@ if response.status_code == 200:
             HtmlFile = open(f'{path}/pyvis_graph.html', 'r', encoding='utf-8')
 
         # Load HTML file in HTML component for display on Streamlit page
-        components.html(HtmlFile.read(), height=700)
+        components.html(HtmlFile.read(), height=1400)
 
 
 else:
