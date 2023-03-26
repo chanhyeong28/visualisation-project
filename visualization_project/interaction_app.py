@@ -75,7 +75,7 @@ if response.status_code == 200:
         g = nx.from_pandas_edgelist(df_select, 'chain', 'protocol')
 
         # Initiate PyVis network object
-        defi_net = Network(height='465px', bgcolor='#222222', font_color='white')
+        defi_net = Network(height="500px", width="100%", bgcolor='#222222', font_color='white')
 
         ## Take Networkx graph and translate it to a PyVis graph format
 
@@ -125,7 +125,7 @@ if response.status_code == 200:
             HtmlFile = open(f'{path}/pyvis_graph.html', 'r', encoding='utf-8')
 
         # Load HTML file in HTML component for display on Streamlit page
-        components.html(HtmlFile.read(), height=1400)
+        components.html(HtmlFile.read(), height=700)
 
 
 else:
