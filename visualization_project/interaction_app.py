@@ -127,11 +127,14 @@ import os
 #     st.header(error)
 
     
-data_file = os.path.join(os.path.dirname(__file__), "check.csv")
+data_file = os.path.join(os.path.dirname(__file__), "check_2.csv")
 df = pd.read_csv(data_file)
 
 # Make title
 st.title('Network Graph Visualization of Defi')
+
+# show data table in page
+st.dataframe(df.style.highlight_max(axis=0))
 
 # Define selection options and sort alphabetically
 category_list = list(df['protocol_category'].unique())
@@ -142,7 +145,7 @@ selected_category = st.multiselect('Select protocol_category to visualize', cate
 
 # Set info message on initial site load
 if len(selected_category) == 0:
-   st.text('Please choose at least 1 category to get started')
+    st.text('Please choose at least 1 category to get started')
 # Create network graph when user selects >= 1 item
 else:
 # Code for filtering dataframe and generating network
@@ -166,11 +169,15 @@ else:
     protocols = list(df_select.protocol.unique())
     # Make a list of the edges. we'll use it later
     edges_list = list(g.edges())
+    # Make a list of chains' tvl.
+    chains_tvl = {chain : df.loc[df['chain'] == chain, 'chain_tvl'].unique().tolist() for chain in chains}
+    # Make a list of protocols' tvl.
+    protocols_tvl = {protocol : df.loc[df['protocol'] == protocol, 'protocol_tvl'].unique().tolist() for protocol in protocols}
 
     # Set nodes size
-    chain_size = [g.degree(chain) * 30 for chain in chains]
-    protocol_size = [g.degree(protocol) for protocol in protocols]
-    
+    chain_size = [0.0001 * chains_tvl[chain][0] for chain in chains]
+    protocol_size = [0.0001 * protocols_tvl[protocol][0] for protocol in protocols]
+
     #add chain_nodes
     G.add_nodes_from(chains, value = chain_size)
 
