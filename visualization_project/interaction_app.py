@@ -75,7 +75,7 @@ if response.status_code == 200:
         g = nx.from_pandas_edgelist(df_select, 'chain', 'protocol')
 
         # Initiate PyVis network object
-        defi_net = Network(height="500px", width="100%", bgcolor='#222222', font_color='white')
+        defi_net = Network(height="700px", width="100%", bgcolor='#222222', font_color='white')
 
         ## Take Networkx graph and translate it to a PyVis graph format
 
@@ -96,11 +96,11 @@ if response.status_code == 200:
         
         #add chain_nodes
         for chain, value in chains_tvl.items():
-            G.add_node(chain, size = 0.0000000005 * value[0])
+            G.add_node(chain, size = 0.0000000005 * value[0] + 10)
 
         #add protocol_nodes
         for protocol, value in protocols_tvl.items():
-            G.add_node(protocol, size = 0.0000000005 * value[0], color = 'white')
+            G.add_node(protocol, size = 0.0000000005 * value[0] + 10, color = 'white')
 
         #add edges
         G.add_edges_from(edges_list)
