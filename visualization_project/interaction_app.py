@@ -6,8 +6,8 @@ from pyvis.network import Network
 import requests
 
 ### Make Background
- # Make title
-st.title('Network Graph Visualization of Defi')
+# Make title
+st.title('Network Graph Visualization of Defi_Beta')
 
 ### load data
 response = requests.get("https://api.llama.fi/protocols")
