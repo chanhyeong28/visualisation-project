@@ -175,8 +175,8 @@ else:
     protocols_tvl = {protocol : df.loc[df['protocol'] == protocol, 'protocol_tvl'].unique().tolist() for protocol in protocols}
 
     # Set nodes size
-    chain_size = [0.001 * chains_tvl[chain][0] for chain in chains]
-    protocol_size = [0.001 * protocols_tvl[protocol][0] for protocol in protocols]
+    chain_size = [chains_tvl[chain][0] for chain in chains]
+    protocol_size = [protocols_tvl[protocol][0] for protocol in protocols]
 
     #add chain_nodes
     G.add_nodes_from(chains, value = chain_size)
