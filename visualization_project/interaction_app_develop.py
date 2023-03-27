@@ -20,7 +20,7 @@ G = nx.from_pandas_edgelist(df, 'node1', 'node2', ['weight', 'color'])
 T = nx.minimum_spanning_tree(G)
 
 # Initiate PyVis network object
-defi_net = Network(height='465px', bgcolor='white', font_color='black')
+defi_net = Network(height='465px', bgcolor='#222222', font_color='white')
 
 # Take Networkx graph and translate it to a PyVis graph format
 defi_net.from_nx(T)
