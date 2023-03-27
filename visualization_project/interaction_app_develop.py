@@ -29,6 +29,10 @@ month_color = {'04/22': 'plus_4', '05/22': 'plus_5', '06/22': 'plus_6', '07/22':
 
 # Filter dataframe
 df_select = df[['node1', 'node2', month_weight[selected_month], month_color[selected_month]]]
+
+if ('selected_month' == '06/22') | ('selected_month' == '07/22') :
+    df_select.drop(df_select[df_select['node1'] == 'KUJI'].index, inplace=True)
+
 df_select.rename(columns = {month_weight[selected_month] : 'weight'}, inplace = True)
 df_select["color"] = df_select[month_color[selected_month]].map(bool_color)
 
