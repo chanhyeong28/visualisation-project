@@ -37,7 +37,7 @@ T = nx.minimum_spanning_tree(G)
 
 # Initiate PyVis network object
 defi_net = Network(height='465px', bgcolor='#222222', font_color='white')
-centrality = nx.degree_centrality(T)
+centrality = nx.betweenness_centrality(T, weight = 'weight')
 
 
 # Take Networkx graph and translate it to a PyVis graph format
@@ -50,9 +50,9 @@ for node in defi_net.nodes:
 
 # 
 sum = 0
-for i in dict(T.degree).values():
+for i in centrality.values():
     sum = sum + i
-centrality_mean = sum / len(T.degree)
+centrality_mean = sum / len(centrality)
 st.header(centrality_mean)
 
 
