@@ -52,8 +52,8 @@ for node in defi_net.nodes:
 sum = 0
 for i in centrality.values():
     sum = sum + i
-
-st.header(centrality_mean = sum/len(centrality))
+centrality_mean = sum/len(centrality)
+st.header(centrality_mean)
 
 
 # Save and read graph as HTML file (on Streamlit Sharing)
