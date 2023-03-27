@@ -50,9 +50,9 @@ for node in defi_net.nodes:
 
 # 
 sum = 0
-for i in T.degree():
+for i in dict(T.degree).values():
     sum = sum + i
-centrality_mean = sum/len(centrality)
+centrality_mean = sum / len(T.degree)
 st.header(centrality_mean)
 
 
