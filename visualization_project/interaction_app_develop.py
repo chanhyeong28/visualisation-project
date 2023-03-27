@@ -7,19 +7,36 @@ import os
 
 data_file = os.path.join(os.path.dirname(__file__), "corr_final_copy.csv")
 df = pd.read_csv(data_file)
-df.rename(columns = {'mutual' : 'weight'}, inplace = True)
-mapping = {True : 'red', False: 'blue'}
-df["color"] = df["plus"].map(mapping)
-df = df[['node1', 'node2', 'weight', 'color']]
+
 
 # Make title
 st.title('Network Graph Visualization of MST')
 
+
+
+
+
+# Implement select dropdown menu for option selection
+selected_month = st.select_slider('Select a month',
+    options=['04/22', '05/22', '06/22', '07/22', '08/22', '09/22', '10/22', '11/22', '12/22', '01/23', '02/23', '03/23'])
+
+# Create mapping dict
+bool_color = {True : 'red', False: 'blue'}
+month_weight = {'04/22': 'weight_4', '05/22': 'weight_5', '06/22': 'weight_6', '07/22': 'weight_7', '08/22': 'weight_8', 
+            '09/22': 'weight_9', '10/22': 'weight_10', '11/22': 'weight_11', '12/22': 'weight_12', '01/23': 'weight_1',
+            '02/23': 'weight_2', '03/23': 'weight_2'}
+month_color = {'04/22': 'plus_4', '05/22': 'plus_5', '06/22': 'plus_6', '07/22': 'plus_7', '08/22': 'plus_8', 
+            '09/22': 'plus_9', '10/22': 'plus_10', '11/22': 'plus_11', '12/22': 'plus_12', '01/23': 'plus_1',
+            '02/23': 'plus_2', '03/23': 'plus_2'}
+
+# Filter dataframe
+df_select = df[['node1', 'node2', month_weight[selected_month], month_color[selected_month]]]
+df_select.rename(columns = {month_weight[selected_month] : 'weight'}, inplace = True)
+df_select["color"] = df_select[month_color[selected_month]].map(bool_color)
+
 # Create networkx graph object for drawing
-G = nx.from_pandas_edgelist(df, 'node1', 'node2', ['weight', 'color'])
+G = nx.from_pandas_edgelist(df_select, 'node1', 'node2', ['weight', 'color'])
 T = nx.minimum_spanning_tree(G)
-
-
 
 # Initiate PyVis network object
 defi_net = Network(height='465px', bgcolor='#222222', font_color='white')
