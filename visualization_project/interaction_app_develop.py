@@ -108,7 +108,11 @@ if response.status_code == 200:
         defi_net.from_nx(G)
 
         # update the graph based on the selected option
-        defi_net.show_buttons(filter_=['physics'])
+        if st.checkbox('Show physics engine'):
+            defi_net.show_buttons(filter_=['physics'])
+
+        if st.checkbox('Show fullscreen button'):
+            defi_net.show_buttons(filter_=['fullscreen'])
 
 
         # Save and read graph as HTML file (on Streamlit Sharing)
