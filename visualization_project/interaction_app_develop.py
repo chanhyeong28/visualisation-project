@@ -5,22 +5,24 @@ import networkx as nx
 from pyvis.network import Network
 import os
 
-data_file = os.path.join(os.path.dirname(__file__), "corr_node_month2_copy.csv")
+data_file = os.path.join(os.path.dirname(__file__), "corr_node_v3_copy.csv")
 df = pd.read_csv(data_file)
+
+
 
 # Make title
 st.title('Network Graph Visualization of MST')
 
 # Implement select dropdown menu for option selection
 selected_month = st.select_slider('Select a month',
-    options=['04/22', '05/22', '06/22', '07/22', '08/22', '09/22', '10/22', '11/22', '12/22', '01/23', '02/23', '03/23'])
+    options=['ALL', '04/22', '05/22', '06/22', '07/22', '08/22', '09/22', '10/22', '11/22', '12/22', '01/23', '02/23', '03/23'])
 
 # Create mapping dict
 bool_color = {True : 'red', False: 'blue'}
-month_weight = {'04/22': 'weight_4', '05/22': 'weight_5', '06/22': 'weight_6', '07/22': 'weight_7', '08/22': 'weight_8', 
+month_weight = {'ALL': 'weight', '04/22': 'weight_4', '05/22': 'weight_5', '06/22': 'weight_6', '07/22': 'weight_7', '08/22': 'weight_8', 
             '09/22': 'weight_9', '10/22': 'weight_10', '11/22': 'weight_11', '12/22': 'weight_12', '01/23': 'weight_1',
             '02/23': 'weight_2', '03/23': 'weight_2'}
-month_color = {'04/22': 'plus_4', '05/22': 'plus_5', '06/22': 'plus_6', '07/22': 'plus_7', '08/22': 'plus_8', 
+month_color = {'ALL': 'plus', '04/22': 'plus_4', '05/22': 'plus_5', '06/22': 'plus_6', '07/22': 'plus_7', '08/22': 'plus_8', 
             '09/22': 'plus_9', '10/22': 'plus_10', '11/22': 'plus_11', '12/22': 'plus_12', '01/23': 'plus_1',
             '02/23': 'plus_2', '03/23': 'plus_2'}
 
@@ -43,8 +45,7 @@ defi_net.from_nx(T)
 
 for node in defi_net.nodes:
     node_id = node['id']
-    node['title'] = f"""
-    Ticker: {node_id}
+    node['title'] = f"""Ticker: {node_id}
     Degree Centrality: {centrality[node_id]}"""
 
 # Save and read graph as HTML file (on Streamlit Sharing)
