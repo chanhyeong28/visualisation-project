@@ -48,6 +48,9 @@ for node in defi_net.nodes:
     node['title'] = f"""Ticker: {node_id}
     Degree Centrality: {centrality[node_id]}"""
 
+# 
+st.header(type(centrality))
+
 # Save and read graph as HTML file (on Streamlit Sharing)
 try:
     path = '/tmp'
