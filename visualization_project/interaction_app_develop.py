@@ -19,6 +19,7 @@ st.title('Network Graph Visualization of MST')
 # Implement select dropdown menu for option selection
 selected_month = st.select_slider('Select a month',
     options=['04/22', '05/22', '06/22', '07/22', '08/22', '09/22', '10/22', '11/22', '12/22', '01/23', '02/23', '03/23'])
+st.header(selected_month)
 
 # Create mapping dict
 bool_color = {True : 'red', False: 'blue'}
