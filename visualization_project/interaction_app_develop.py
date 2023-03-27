@@ -75,7 +75,7 @@ if response.status_code == 200:
         g = nx.from_pandas_edgelist(df_select, 'chain', 'protocol')
 
         # Initiate PyVis network object
-        defi_net = Network(height="700px", width="100%", bgcolor='#222222', font_color='white')
+        defi_net = Network(height="700px", width="100%", bgcolor='#222222', font_color='white', select_menu=True)
 
         ## Take Networkx graph and translate it to a PyVis graph format
 
@@ -107,8 +107,7 @@ if response.status_code == 200:
 
         defi_net.from_nx(G)
 
-
-        defi_net.show_buttons(filter_=['physics'])
+        defi_net.show_buttons(filter_=['nodes'])
 
         # Save and read graph as HTML file (on Streamlit Sharing)
         try:
