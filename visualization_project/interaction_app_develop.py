@@ -5,9 +5,8 @@ import networkx as nx
 from pyvis.network import Network
 import os
 
-data_file = os.path.join(os.path.dirname(__file__), "corr_final_copy.csv")
+data_file = os.path.join(os.path.dirname(__file__), "corr_node_month_copy.csv")
 df = pd.read_csv(data_file)
-
 
 # Make title
 st.title('Network Graph Visualization of MST')
@@ -15,11 +14,9 @@ st.title('Network Graph Visualization of MST')
 
 
 
-
 # Implement select dropdown menu for option selection
 selected_month = st.select_slider('Select a month',
     options=['04/22', '05/22', '06/22', '07/22', '08/22', '09/22', '10/22', '11/22', '12/22', '01/23', '02/23', '03/23'])
-st.header(type(selected_month))
 
 # Create mapping dict
 bool_color = {True : 'red', False: 'blue'}
