@@ -21,10 +21,10 @@ selected_month = st.select_slider('Select a month',
 bool_color = {True : 'red', False: 'blue'}
 month_weight = {'ALL': 'weight', '04/22': 'weight_4', '05/22': 'weight_5', '06/22': 'weight_6', '07/22': 'weight_7', '08/22': 'weight_8', 
             '09/22': 'weight_9', '10/22': 'weight_10', '11/22': 'weight_11', '12/22': 'weight_12', '01/23': 'weight_1',
-            '02/23': 'weight_2', '03/23': 'weight_2'}
+            '02/23': 'weight_2', '03/23': 'weight_3'}
 month_color = {'ALL': 'plus', '04/22': 'plus_4', '05/22': 'plus_5', '06/22': 'plus_6', '07/22': 'plus_7', '08/22': 'plus_8', 
             '09/22': 'plus_9', '10/22': 'plus_10', '11/22': 'plus_11', '12/22': 'plus_12', '01/23': 'plus_1',
-            '02/23': 'plus_2', '03/23': 'plus_2'}
+            '02/23': 'plus_2', '03/23': 'plus_3'}
 
 # Filter dataframe
 df_select = df[['node1', 'node2', month_weight[selected_month], month_color[selected_month]]]
@@ -46,14 +46,14 @@ defi_net.from_nx(T)
 for node in defi_net.nodes:
     node_id = node['id']
     node['title'] = f"""Ticker: {node_id}
-    Degree Centrality: {centrality[node_id]}"""
+    Centrality: {centrality[node_id]}"""
 
-# 
+# centrality mean
 sum = 0
 for i in centrality.values():
     sum = sum + i
 centrality_mean = sum / len(centrality)
-st.header(centrality_mean)
+st.header(f"Total Centrality: {centrality_mean}")
 
 
 # Save and read graph as HTML file (on Streamlit Sharing)
