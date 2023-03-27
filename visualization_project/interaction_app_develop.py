@@ -19,12 +19,19 @@ st.title('Network Graph Visualization of MST')
 G = nx.from_pandas_edgelist(df, 'node1', 'node2', ['weight', 'color'])
 T = nx.minimum_spanning_tree(G)
 
+
+
 # Initiate PyVis network object
 defi_net = Network(height='465px', bgcolor='#222222', font_color='white')
+centrality = nx.degree_centrality(T)
+
 
 # Take Networkx graph and translate it to a PyVis graph format
 defi_net.from_nx(T)
 
+for node in defi_net.nodes:
+    node_id = node['id']
+    node['title'] = f"Degree Centrality: {centrality[node_id]}"
 
 # Save and read graph as HTML file (on Streamlit Sharing)
 try:
