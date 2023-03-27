@@ -43,7 +43,9 @@ defi_net.from_nx(T)
 
 for node in defi_net.nodes:
     node_id = node['id']
-    node['title'] = f"Degree Centrality: {centrality[node_id]}"
+    node['title'] = f"""
+    Ticker: {node_id}
+    Degree Centrality: {centrality[node_id]}"""
 
 # Save and read graph as HTML file (on Streamlit Sharing)
 try:
