@@ -5,7 +5,7 @@ import networkx as nx
 from pyvis.network import Network
 import os
 
-data_file = os.path.join(os.path.dirname(__file__), "corr_node_v3_copy.csv")
+data_file = os.path.join(os.path.dirname(__file__), "corr_node_v4_copy.csv")
 df = pd.read_csv(data_file)
 
 
