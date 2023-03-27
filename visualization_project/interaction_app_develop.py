@@ -108,11 +108,43 @@ if response.status_code == 200:
         defi_net.from_nx(G)
 
         # update the graph based on the selected option
-        if st.checkbox('Show physics engine'):
-            defi_net.show_buttons(filter_=['physics'])
+        physics_options = {"enabled": st.checkbox("Physics engine enabled", value=True),
+            "barnesHut": {
+                "gravitationalConstant": st.slider(
+                    "Gravitational constant",
+                    min_value=0.1,
+                    max_value=10.0,
+                    step=0.1,
+                    value=1.0,
+                    ),
+                "centralGravity": st.slider(
+                    "Central gravity",
+                    min_value=0.1,
+                    max_value=10.0,
+                    step=0.1,
+                    value=1.0,
+                    ),
+                "springLength": st.slider(
+                    "Spring length",
+                    min_value=10,
+                    max_value=500,
+                    step=10,
+                    value=100,
+                    ),
+                "springConstant": st.slider(
+                    "Spring constant",
+                    min_value=0.001,
+                    max_value=0.5,
+                    step=0.001,
+                    value=0.08,
+                    ),
+            },
+        }
 
-        if st.checkbox('Show fullscreen button'):
-            defi_net.show_buttons(filter_=['fullscreen'])
+        # update the graph with the selected settings
+        if st.button("Apply settings"):
+            defi_net.set_options(physics_options)
+
 
 
         # Save and read graph as HTML file (on Streamlit Sharing)
