@@ -13,14 +13,20 @@ import plotly.express as px
 st.set_page_config(page_title="DeFi Network", layout="wide")
 # page_icon= 으로 favicon 설정
 
-with open('style.css') as f:
+style_file = os.path.join(os.path.dirname(__file__), "style.css")
+image_file = os.path.join(os.path.dirname(__file__), 'logo.png')
+TVL_Category_file = os.path.join(os.path.dirname(__file__), 'TVL_Category.csv')
+allChains_file = os.path.join(os.path.dirname(__file__), 'allChains.csv')
+data_file = os.path.join(os.path.dirname(__file__), "corr_node_v4_copy.csv")
+
+with open(style_file) as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 header = st.container()
 with header:
     col14, col15 = st.columns([1, 13])
     with col14:
-        image = Image.open('logo.png')
+        image = Image.open(image_file)
         st.image(image, width=60, use_column_width=False)
     with col15:
         st.markdown(
@@ -201,13 +207,13 @@ with body:
         tab1, tab2 = st.tabs(
             ["TVL for each DeFi Protocol Category", "TVL Change over a year for each Chain"])
         with tab1:
-            df = pd.read_csv('TVL_Category.csv')
+            df = pd.read_csv(TVL_Category_file)
             fig = px.bar(df, x="Category", y="TVL",
                          title="TVL for each DeFi Protocol Category")
             st.plotly_chart(fig)
         with tab2:
             fig = go.Figure()
-            df = pd.read_csv('allChains.csv')
+            df = pd.read_csv(allChains_file)
             for chain in list(df['Chain'].unique()):
                 chain_df = df[df['Chain'] == chain]
                 fig.add_trace(
@@ -226,8 +232,6 @@ with body:
             st.write("<p style='color: #97C2FC; text-align: center; font-size: 20px; font-weight: bold;'>Network Graph Visualization of MST</p>", unsafe_allow_html=True)
 
             #########
-            data_file = os.path.join(os.path.dirname(
-                __file__), "corr_node_v4_copy.csv")
             df = pd.read_csv(data_file)
 
             # Implement select dropdown menu for option selection
