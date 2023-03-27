@@ -25,10 +25,6 @@ defi_net = Network(height='465px', bgcolor='white', font_color='black')
 # Take Networkx graph and translate it to a PyVis graph format
 defi_net.from_nx(T)
 
-# Generate network with specific layout settings
-defi_net.repulsion(node_distance=420, central_gravity=0.33,
-                    spring_length=110, spring_strength=0.10,
-                    damping=0.95)
 
 # Save and read graph as HTML file (on Streamlit Sharing)
 try:
