@@ -75,7 +75,7 @@ if response.status_code == 200:
         g = nx.from_pandas_edgelist(df_select, 'chain', 'protocol')
 
         # Initiate PyVis network object
-        defi_net = Network(height="700px", width="100%", bgcolor='#222222', font_color='white')
+        defi_net = Network(height="700px", width="100%", bgcolor='#222222', font_color='white', select_menu=True)
 
         ## Take Networkx graph and translate it to a PyVis graph format
 
@@ -107,46 +107,11 @@ if response.status_code == 200:
 
         defi_net.from_nx(G)
 
-        # update the graph based on the selected option
-        physics_options = {"enabled": st.checkbox("Physics engine enabled", value=True),
-            "barnesHut": {
-                "gravitationalConstant": st.slider(
-                    "Gravitational constant",
-                    min_value=0.1,
-                    max_value=10.0,
-                    step=0.1,
-                    value=1.0,
-                    ),
-                "centralGravity": st.slider(
-                    "Central gravity",
-                    min_value=0.1,
-                    max_value=10.0,
-                    step=0.1,
-                    value=1.0,
-                    ),
-                "springLength": st.slider(
-                    "Spring length",
-                    min_value=10,
-                    max_value=500,
-                    step=10,
-                    value=100,
-                    ),
-                "springConstant": st.slider(
-                    "Spring constant",
-                    min_value=0.001,
-                    max_value=0.5,
-                    step=0.001,
-                    value=0.08,
-                    ),
-            },
-        }
-
-        # update the graph with the selected settings
-        if st.button("Apply settings"):
-            defi_net.set_options(physics_options)
-
-
-
+        # Generate network with specific layout settings
+        defi_net.repulsion(node_distance=420, central_gravity=0.33,
+                        spring_length=110, spring_strength=0.10,
+                        damping=0.95)
+        
         # Save and read graph as HTML file (on Streamlit Sharing)
         try:
             path = '/tmp'
