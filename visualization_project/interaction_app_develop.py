@@ -107,11 +107,9 @@ if response.status_code == 200:
 
         defi_net.from_nx(G)
 
-        # Generate network with specific layout settings
-        defi_net.repulsion(node_distance=420, central_gravity=0.33,
-                        spring_length=110, spring_strength=0.10,
-                        damping=0.95)
-        
+
+        defi_net.show_buttons(filter_=['physics'])
+
         # Save and read graph as HTML file (on Streamlit Sharing)
         try:
             path = '/tmp'
