@@ -23,7 +23,7 @@ T = nx.minimum_spanning_tree(G)
 defi_net = Network(height='465px', bgcolor='white', font_color='black')
 
 # Take Networkx graph and translate it to a PyVis graph format
-defi_net.from_nx(G)
+defi_net.from_nx(T)
 
 # Generate network with specific layout settings
 defi_net.repulsion(node_distance=420, central_gravity=0.33,
