@@ -49,7 +49,12 @@ for node in defi_net.nodes:
     Degree Centrality: {centrality[node_id]}"""
 
 # 
-st.header(type(centrality))
+sum = 0
+for i in centrality.values():
+    sum = sum + i
+
+st.header(centrality_mean = sum/len(centrality))
+
 
 # Save and read graph as HTML file (on Streamlit Sharing)
 try:
