@@ -75,7 +75,7 @@ if response.status_code == 200:
         g = nx.from_pandas_edgelist(df_select, 'chain', 'protocol')
 
         # Initiate PyVis network object
-        defi_net = Network(height="700px", width="100%", bgcolor='#222222', font_color='white', show_buttons=True)
+        defi_net = Network(height="700px", width="100%", bgcolor='#222222', font_color='white')
 
         ## Take Networkx graph and translate it to a PyVis graph format
 
@@ -108,11 +108,7 @@ if response.status_code == 200:
         defi_net.from_nx(G)
 
         # update the graph based on the selected option
-        if st.checkbox('Show physics engine'):
-            defi_net.show_buttons(filter_=['physics'])
-
-        if st.checkbox('Show fullscreen button'):
-            defi_net.show_buttons(filter_=['fullscreen'])
+        defi_net.show_buttons(filter_=['physics'])
 
 
         # Save and read graph as HTML file (on Streamlit Sharing)
