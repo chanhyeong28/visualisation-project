@@ -34,8 +34,11 @@ with header:
     st.markdown(
         "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the DeFi-Blockchain-Crytocurrency ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
 
-body1 = tail = st.markdown(
-    "<div style='height:600px;></div>", unsafe_allow_html=True)
+# body1 = tail = st.markdown(
+#     "<div style='height:600px;></div>", unsafe_allow_html=True)
+
+body1 = st.container()
+
 with body1:
     # header
     col1, col2 = st.columns(2)
@@ -299,8 +302,10 @@ with body1:
             ##########
 
 
-body2 = tail = st.markdown(
-    "<div style='height:600px;></div>", unsafe_allow_html=True)
+# body2 = tail = st.markdown(
+#     "<div style='height:600px;></div>", unsafe_allow_html=True)
+
+body2 = st.container()
 
 with body2 :
     col8, col9, col10 = st.columns(3)
