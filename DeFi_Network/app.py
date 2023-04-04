@@ -34,12 +34,12 @@ with header:
     st.markdown(
         "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the DeFi-Blockchain-Crytocurrency ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
 
-body = tail = st.markdown(
+body = st.markdown(
     "<div style='height:600px;></div>", unsafe_allow_html=True)
 
 with body:
     # header
-    col1, col2 = st.tabs(['am','pm'])
+    col1, col2 = st.tabs(['Defi-MainNet Ecosystem','MST for Coins'])
 
     with col1:
 
@@ -205,24 +205,6 @@ with body:
 
         st.markdown("<div style='height: 200px;></div>", unsafe_allow_html=True)
 
-        # tab1, tab2 = st.tabs(
-        #     ["TVL for each DeFi Protocol Category", "TVL Change over a year for each Chain"])
-        # with tab1:
-        #     df = pd.read_csv(TVL_Category_file)
-        #     fig = px.bar(df, x="Category", y="TVL",
-        #                  title="TVL for each DeFi Protocol Category")
-        #     st.plotly_chart(fig)
-        # with tab2:
-        #     fig = go.Figure()
-        #     df = pd.read_csv(allChains_file)
-        #     for chain in list(df['Chain'].unique()):
-        #         chain_df = df[df['Chain'] == chain]
-        #         fig.add_trace(
-        #             go.Scatter(x=chain_df.Date, y=chain_df.tvl, name=chain))
-        #     fig.update_layout(title="TVL Change over a year for each Chain",
-        #                       xaxis=dict(rangeslider_visible=True))
-        #     st.plotly_chart(fig)
-
     with col2:
 
         st.markdown(
@@ -299,38 +281,33 @@ with body:
             components.html(HtmlFile.read(), height=450)
             ##########
 
-
-# body2 = tail = st.markdown(
-#     "<div style='height:600px;></div>", unsafe_allow_html=True)
-
-
-            # col11, col12, col13, col16 = st.columns(4)
-            # with col11:
-            #     st.write(
-            #         f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(defi_net.nodes)}</p>", unsafe_allow_html=True)
-            #     st.write(
-            #         "<p style='font-size: 15px; font-weight: bold;'>Token Nodes</p>", unsafe_allow_html=True)
-            # with col12:
-            #     ct_edges = 0
-            #     ct_reds = 0
-            #     for (u, v, c) in T.edges.data('color', default='red'):
-            #         ct_edges += 1
-            #         if c == 'red':
-            #             ct_reds += 1
-            #     st.write(
-            #         f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{ct_edges}</p>", unsafe_allow_html=True)
-            #     st.write(
-            #     "<p style='font-size: 15px; font-weight: bold;'>Edges</p>", unsafe_allow_html=True)
-            # with col13:
-            #     st.write(
-            #         f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{ct_reds}</p>", unsafe_allow_html=True)
-            #     st.write(
-            #     "<p style='font-size: 15px; font-weight: bold;'>Red Edges</p>", unsafe_allow_html=True)
-            # with col16:
-            #     st.write(
-            #         f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{round(centrality_mean,3)}</p>", unsafe_allow_html=True)
-            #     st.write(
-            #     "<p style='font-size: 15px; font-weight: bold;'>Total Centrality</p>", unsafe_allow_html=True)
+            col11, col12, col13, col16 = st.columns(4)
+            with col11:
+                st.write(
+                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(defi_net.nodes)}</p>", unsafe_allow_html=True)
+                st.write(
+                    "<p style='font-size: 15px; font-weight: bold;'>Token Nodes</p>", unsafe_allow_html=True)
+            with col12:
+                ct_edges = 0
+                ct_reds = 0
+                for (u, v, c) in T.edges.data('color', default='red'):
+                    ct_edges += 1
+                    if c == 'red':
+                        ct_reds += 1
+                st.write(
+                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{ct_edges}</p>", unsafe_allow_html=True)
+                st.write(
+                "<p style='font-size: 15px; font-weight: bold;'>Edges</p>", unsafe_allow_html=True)
+            with col13:
+                st.write(
+                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{ct_reds}</p>", unsafe_allow_html=True)
+                st.write(
+                "<p style='font-size: 15px; font-weight: bold;'>Red Edges</p>", unsafe_allow_html=True)
+            with col16:
+                st.write(
+                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{round(centrality_mean,3)}</p>", unsafe_allow_html=True)
+                st.write(
+                "<p style='font-size: 15px; font-weight: bold;'>Total Centrality</p>", unsafe_allow_html=True)
 
 
     #    st.markdown("<div style='height: 200px;></div>", unsafe_allow_html=True)
