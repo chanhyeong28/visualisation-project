@@ -32,16 +32,17 @@ with header:
         st.markdown(
             "<p style='text-align: left; font-size: 50px; font-weight: bold;'>DeFi Network</p>", unsafe_allow_html=True)
     st.markdown(
-        "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the DeFi-Blockchain-Crytocurrency ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
+        "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the DeFi-MainNet ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
 
 body = st.markdown(
     "<div style='height:600px;></div>", unsafe_allow_html=True)
 
 with body:
     # header
-    col1, col2 = st.tabs(['Defi-MainNet Ecosystem','MST for Coins'])
+    tab1, tab2, tab3, tab4 = st.tabs(["DeFi-MainNet Ecosystem","Coin Price Correlations",
+                                      "TVL for each DeFi Protocol Category", "TVL Change over a year for each Chain"])
 
-    with col1:
+    with tab1:
 
         st.markdown(
             "<div style='height: 30px;'></div>", unsafe_allow_html=True)
@@ -49,7 +50,7 @@ with body:
         network1 = st.container()
         with network1:
 
-            st.write("<p style='color: #97C2FC; text-align: center; font-size: 20px; font-weight: bold;'>Network Graph Visualization of DeFi_Beta</p>", unsafe_allow_html=True)
+            st.write("<p style='color: #97C2FC; text-align: center; font-size: 20px; font-weight: bold;'>Network Graph Visualization of DeFi-MainNet Ecosystem</p>", unsafe_allow_html=True)
 
             ##########
             # load data
@@ -205,14 +206,14 @@ with body:
 
         st.markdown("<div style='height: 200px;></div>", unsafe_allow_html=True)
 
-    with col2:
+    with tab2:
 
         st.markdown(
             "<div style='height: 30px;'></div>", unsafe_allow_html=True)
 
         network2 = st.container()
         with network2:
-            st.write("<p style='color: #97C2FC; text-align: center; font-size: 20px; font-weight: bold;'>Network Graph Visualization of MST</p>", unsafe_allow_html=True)
+            st.write("<p style='color: #97C2FC; text-align: center; font-size: 20px; font-weight: bold;'>Network Graph Visualization of Coin Price Correlations</p>", unsafe_allow_html=True)
 
             #########
             df = pd.read_csv(data_file)
@@ -310,24 +311,27 @@ with body:
                 "<p style='font-size: 15px; font-weight: bold;'>Total Centrality</p>", unsafe_allow_html=True)
 
 
-    #    st.markdown("<div style='height: 200px;></div>", unsafe_allow_html=True)
-
-    #     tab1, tab2 = st.tabs(
-    #         ["TVL for each DeFi Protocol Category", "TVL Change over a year for each Chain"])
-    #     with tab1:
-    #         df = pd.read_csv(TVL_Category_file)
-    #         fig = px.bar(df, x="Category", y="TVL",
-    #                      title="TVL for each DeFi Protocol Category")
-    #         st.plotly_chart(fig)
-    #     with tab2:
-    #         fig = go.Figure()
-    #         df = pd.read_csv(allChains_file)
-    #         for chain in list(df['Chain'].unique()):
-    #             chain_df = df[df['Chain'] == chain]
-    #             fig.add_trace(
-    #                 go.Scatter(x=chain_df.Date, y=chain_df.tvl, name=chain))
-    #         fig.update_layout(title="TVL Change over a year for each Chain",
-    #                           xaxis=dict(rangeslider_visible=True))
-    #         st.plotly_chart(fig)
+    with tab3:
+        st.markdown(
+            "<div style='height: 30px;'></div>", unsafe_allow_html=True)
+        
+        df = pd.read_csv(TVL_Category_file)
+        fig = px.bar(df, x="Category", y="TVL",
+                        title="TVL for each DeFi Protocol Category")
+        st.plotly_chart(fig)
+    
+    with tab4:
+        st.markdown(
+            "<div style='height: 30px;'></div>", unsafe_allow_html=True)
+        
+        fig = go.Figure()
+        df = pd.read_csv(allChains_file)
+        for chain in list(df['Chain'].unique()):
+            chain_df = df[df['Chain'] == chain]
+            fig.add_trace(
+                go.Scatter(x=chain_df.Date, y=chain_df.tvl, name=chain))
+        fig.update_layout(title="TVL Change over a year for each Chain",
+                            xaxis=dict(rangeslider_visible=True))
+        st.plotly_chart(fig)
 
     
