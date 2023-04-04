@@ -301,6 +301,7 @@ with body1:
 
 body2 = tail = st.markdown(
     "<div style='height:600px;></div>", unsafe_allow_html=True)
+
 with body2 :
     col8, col9, col10 = st.columns(3)
     with col8:
@@ -349,22 +350,22 @@ with body2 :
             #     "<p style='font-size: 15px; font-weight: bold;'>Total Centrality</p>", unsafe_allow_html=True)
 
 
-       st.markdown("<div style='height: 200px;></div>", unsafe_allow_html=True)
+    #    st.markdown("<div style='height: 200px;></div>", unsafe_allow_html=True)
 
-        tab1, tab2 = st.tabs(
-            ["TVL for each DeFi Protocol Category", "TVL Change over a year for each Chain"])
-        with tab1:
-            df = pd.read_csv(TVL_Category_file)
-            fig = px.bar(df, x="Category", y="TVL",
-                         title="TVL for each DeFi Protocol Category")
-            st.plotly_chart(fig)
-        with tab2:
-            fig = go.Figure()
-            df = pd.read_csv(allChains_file)
-            for chain in list(df['Chain'].unique()):
-                chain_df = df[df['Chain'] == chain]
-                fig.add_trace(
-                    go.Scatter(x=chain_df.Date, y=chain_df.tvl, name=chain))
-            fig.update_layout(title="TVL Change over a year for each Chain",
-                              xaxis=dict(rangeslider_visible=True))
-            st.plotly_chart(fig)
+    #     tab1, tab2 = st.tabs(
+    #         ["TVL for each DeFi Protocol Category", "TVL Change over a year for each Chain"])
+    #     with tab1:
+    #         df = pd.read_csv(TVL_Category_file)
+    #         fig = px.bar(df, x="Category", y="TVL",
+    #                      title="TVL for each DeFi Protocol Category")
+    #         st.plotly_chart(fig)
+    #     with tab2:
+    #         fig = go.Figure()
+    #         df = pd.read_csv(allChains_file)
+    #         for chain in list(df['Chain'].unique()):
+    #             chain_df = df[df['Chain'] == chain]
+    #             fig.add_trace(
+    #                 go.Scatter(x=chain_df.Date, y=chain_df.tvl, name=chain))
+    #         fig.update_layout(title="TVL Change over a year for each Chain",
+    #                           xaxis=dict(rangeslider_visible=True))
+    #         st.plotly_chart(fig)
