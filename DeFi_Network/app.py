@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 # page setting
-st.set_page_config(page_title="DeFi Network", layout="wide")
+st.set_page_config(page_title="Cryptoasset Network", layout="wide")
 # page_icon= 으로 favicon 설정
 
 style_file = os.path.join(os.path.dirname(__file__), "style.css")
@@ -30,7 +30,7 @@ with header:
         st.image(image, width=60, use_column_width=False)
     with col15:
         st.markdown(
-            "<p style='text-align: left; font-size: 50px; font-weight: bold;'>DeFi Network</p>", unsafe_allow_html=True)
+            "<p style='text-align: left; font-size: 50px; font-weight: bold;'>Cryptoasset Network</p>", unsafe_allow_html=True)
     st.markdown(
         "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the Cryptoasset Ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
 
