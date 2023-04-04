@@ -32,7 +32,7 @@ with header:
         st.markdown(
             "<p style='text-align: left; font-size: 50px; font-weight: bold;'>DeFi Network</p>", unsafe_allow_html=True)
     st.markdown(
-        "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the DeFi-MainNet ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
+        "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the DeFi Protocol-MainNet ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
 
 
 st.markdown("<div style='height:600px;></div>", unsafe_allow_html=True)
@@ -191,12 +191,12 @@ with tab1:
             st.write(
                 f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(chains)}</p>", unsafe_allow_html=True)
             st.write(
-                "<p style='font-size: 15px; font-weight: bold;'>Chain Nodes</p>", unsafe_allow_html=True)
+                "<p style='font-size: 15px; font-weight: bold;'>Chain(MainNet) Nodes</p>", unsafe_allow_html=True)
         with col9:
             st.write(
                 f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(protocols)}</p>", unsafe_allow_html=True)
             st.write(
-                "<p style='font-size: 15px; font-weight: bold;'>Protocol Nodes</p>", unsafe_allow_html=True)
+                "<p style='font-size: 15px; font-weight: bold;'>Protocol(DeFi) Nodes</p>", unsafe_allow_html=True)
         with col10:
             st.write(
                 f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(edges_list)}</p>", unsafe_allow_html=True)
@@ -317,7 +317,7 @@ with tab3:
     df = pd.read_csv(TVL_Category_file)
     fig = px.bar(df, x="Category", y="TVL",
                     title="TVL for each DeFi Protocol Category")
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 with tab4:
     st.markdown(
@@ -331,5 +331,5 @@ with tab4:
             go.Scatter(x=chain_df.Date, y=chain_df.tvl, name=chain))
     fig.update_layout(title="TVL Change over a year for each Chain",
                         xaxis=dict(rangeslider_visible=True))
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
