@@ -32,7 +32,7 @@ with header:
         st.markdown(
             "<p style='text-align: left; font-size: 50px; font-weight: bold;'>DeFi Network</p>", unsafe_allow_html=True)
     st.markdown(
-        "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the DeFi Protocol-MainNet ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
+        "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the Cryptoasset Ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
 
 
 st.markdown("<div style='height:600px;></div>", unsafe_allow_html=True)
@@ -303,6 +303,8 @@ with tab2:
                 f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{ct_reds}</p>", unsafe_allow_html=True)
             st.write(
             "<p style='font-size: 15px; font-weight: bold;'>Red Edges</p>", unsafe_allow_html=True)
+            st.write(
+            "<p style='font-size: 15px; font-weight: bold;'>(Negative Correlation)</p>", unsafe_allow_html=True)
         with col16:
             st.write(
                 f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{round(centrality_mean,3)}</p>", unsafe_allow_html=True)
