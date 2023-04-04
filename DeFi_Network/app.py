@@ -298,31 +298,31 @@ with body:
             components.html(HtmlFile.read(), height=450)
             ##########
 
-            col11, col12, col13, col16 = st.columns(4)
-            with col11:
-                st.write(
-                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(defi_net.nodes)}</p>", unsafe_allow_html=True)
-                st.write(
-                    "<p style='font-size: 15px; font-weight: bold;'>Token Nodes</p>", unsafe_allow_html=True)
-            with col12:
-                ct_edges = 0
-                ct_reds = 0
-                for (u, v, c) in T.edges.data('color', default='red'):
-                    ct_edges += 1
-                    if c == 'red':
-                        ct_reds += 1
-                st.write(
-                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{ct_edges}</p>", unsafe_allow_html=True)
-                st.write(
-                "<p style='font-size: 15px; font-weight: bold;'>Edges</p>", unsafe_allow_html=True)
-            with col13:
-                st.write(
-                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{ct_reds}</p>", unsafe_allow_html=True)
-                st.write(
-                "<p style='font-size: 15px; font-weight: bold;'>Red Edges</p>", unsafe_allow_html=True)
-            with col16:
-                st.write(
-                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{round(centrality_mean,3)}</p>", unsafe_allow_html=True)
-                st.write(
-                "<p style='font-size: 15px; font-weight: bold;'>Total Centrality</p>", unsafe_allow_html=True)
+            # col11, col12, col13, col16 = st.columns(4)
+            # with col11:
+            #     st.write(
+            #         f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(defi_net.nodes)}</p>", unsafe_allow_html=True)
+            #     st.write(
+            #         "<p style='font-size: 15px; font-weight: bold;'>Token Nodes</p>", unsafe_allow_html=True)
+            # with col12:
+            #     ct_edges = 0
+            #     ct_reds = 0
+            #     for (u, v, c) in T.edges.data('color', default='red'):
+            #         ct_edges += 1
+            #         if c == 'red':
+            #             ct_reds += 1
+            #     st.write(
+            #         f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{ct_edges}</p>", unsafe_allow_html=True)
+            #     st.write(
+            #     "<p style='font-size: 15px; font-weight: bold;'>Edges</p>", unsafe_allow_html=True)
+            # with col13:
+            #     st.write(
+            #         f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{ct_reds}</p>", unsafe_allow_html=True)
+            #     st.write(
+            #     "<p style='font-size: 15px; font-weight: bold;'>Red Edges</p>", unsafe_allow_html=True)
+            # with col16:
+            #     st.write(
+            #         f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{round(centrality_mean,3)}</p>", unsafe_allow_html=True)
+            #     st.write(
+            #     "<p style='font-size: 15px; font-weight: bold;'>Total Centrality</p>", unsafe_allow_html=True)
 
