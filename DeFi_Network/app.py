@@ -34,14 +34,12 @@ with header:
     st.markdown(
         "<p style='text-align: center; font-size: 15px; font-weight: bold;'>We offer network graphs as a new way of looking at the DeFi-Blockchain-Crytocurrency ecosystem,<br>providing users with visuals to determine the risks posed by complex connections and portfolios to hedge them.</p>", unsafe_allow_html=True)
 
-# body1 = tail = st.markdown(
-#     "<div style='height:600px;></div>", unsafe_allow_html=True)
+body = tail = st.markdown(
+    "<div style='height:600px;></div>", unsafe_allow_html=True)
 
-body1 = st.container()
-
-with body1:
+with body:
     # header
-    col1, col2 = st.columns(2)
+    col1, col2 = st.tabs(['am','pm'])
 
     with col1:
 
@@ -305,26 +303,6 @@ with body1:
 # body2 = tail = st.markdown(
 #     "<div style='height:600px;></div>", unsafe_allow_html=True)
 
-body2 = st.container()
-
-with body2 :
-    col8, col9, col10 = st.columns(3)
-    with col8:
-        st.write(
-            f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(chains)}</p>", unsafe_allow_html=True)
-        st.write(
-            "<p style='font-size: 15px; font-weight: bold;'>Chain Nodes</p>", unsafe_allow_html=True)
-    with col9:
-        st.write(
-            f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(protocols)}</p>", unsafe_allow_html=True)
-        st.write(
-            "<p style='font-size: 15px; font-weight: bold;'>Protocol Nodes</p>", unsafe_allow_html=True)
-    with col10:
-        st.write(
-            f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(edges_list)}</p>", unsafe_allow_html=True)
-        st.write(
-            "<p style='font-size: 15px; font-weight: bold;'>Edges</p>", unsafe_allow_html=True)
-
 
             # col11, col12, col13, col16 = st.columns(4)
             # with col11:
@@ -374,3 +352,5 @@ with body2 :
     #         fig.update_layout(title="TVL Change over a year for each Chain",
     #                           xaxis=dict(rangeslider_visible=True))
     #         st.plotly_chart(fig)
+
+    
