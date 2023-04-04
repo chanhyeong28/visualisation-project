@@ -185,22 +185,22 @@ with body:
                 st.header(error)
             ##########
 
-            col8, col9, col10 = st.columns(3)
-            with col8:
-                st.write(
-                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(chains)}</p>", unsafe_allow_html=True)
-                st.write(
-                    "<p style='font-size: 15px; font-weight: bold;'>Chain Nodes</p>", unsafe_allow_html=True)
-            with col9:
-                st.write(
-                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(protocols)}</p>", unsafe_allow_html=True)
-                st.write(
-                    "<p style='font-size: 15px; font-weight: bold;'>Protocol Nodes</p>", unsafe_allow_html=True)
-            with col10:
-                st.write(
-                    f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(edges_list)}</p>", unsafe_allow_html=True)
-                st.write(
-                    "<p style='font-size: 15px; font-weight: bold;'>Edges</p>", unsafe_allow_html=True)
+    col8, col9, col10 = st.columns(3)
+    with col8:
+        st.write(
+            f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(chains)}</p>", unsafe_allow_html=True)
+        st.write(
+            "<p style='font-size: 15px; font-weight: bold;'>Chain Nodes</p>", unsafe_allow_html=True)
+    with col9:
+        st.write(
+            f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(protocols)}</p>", unsafe_allow_html=True)
+        st.write(
+            "<p style='font-size: 15px; font-weight: bold;'>Protocol Nodes</p>", unsafe_allow_html=True)
+    with col10:
+        st.write(
+            f"<p style='color: #00CCF3; font-size: 50px; font-weight: bold;'>{len(edges_list)}</p>", unsafe_allow_html=True)
+        st.write(
+            "<p style='font-size: 15px; font-weight: bold;'>Edges</p>", unsafe_allow_html=True)
 
         st.markdown("<div style='height: 200px;></div>", unsafe_allow_html=True)
 
